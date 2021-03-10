@@ -23,13 +23,14 @@ Requires the messenger, messenger.tcp_transport, and messenger.log_service
 components to be running.
 """
 
-import json
-import sys
-import socket
-import argparse
+import os # use os
+import json # use json
+import sys # use sys 
+import socket # use socket 
+import argparse # use argparse  
 #from pox.messenger.test_client import JSONDestreamer
 
-import uuid
+import uuid # use uuid
 uniq = str(uuid.uuid4())
 mychannel = 'log_' + str(uuid.uuid4())
 
@@ -50,9 +51,8 @@ args = parser.parse_args()
 host = args.address
 port = args.port
 
-
-class JSONDestreamer (object):
-  import json
+# create class JSONDestreamer (object):
+class JSONDestreamer (object): 
   decoder = json.JSONDecoder()
   def __init__ (self, callback = None):
     self._buf = ''
@@ -69,9 +69,9 @@ class JSONDestreamer (object):
         self._buf = self._buf[off:].lstrip()
         self.callback(r)
     except ValueError:
-      pass
+      pass # an ampty block
 
-
+# create class LogJSONDestreamer (JSONDestreamer):
 class LogJSONDestreamer (JSONDestreamer):
   def rx (self, data):
     if data.get('CHANNEL') != mychannel: return
