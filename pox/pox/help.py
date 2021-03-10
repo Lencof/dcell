@@ -18,9 +18,11 @@ Attempts to give help on other components
 
 from __future__ import print_function
 import pox.boot as boot
-import inspect
-import sys
+import inspect # use inspect
+import sys # use sys 
+import os # use os 
 
+# create def _show_args (f,name):
 def _show_args (f,name):
   #TODO: Refactor with pox.boot
 
@@ -72,7 +74,7 @@ def _show_args (f,name):
 
   return out.strip()
 
-
+# create def launch (no_args = False, short = False, **kw):
 def launch (no_args = False, short = False, **kw):
   """
   Shows help
@@ -158,4 +160,4 @@ def launch (no_args = False, short = False, **kw):
   print()
   print(alldoc)
 
-  sys.exit(0)
+  sys.exit(0) # exit()
