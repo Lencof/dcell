@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 # pylint: disable=missing-docstring,invalid-name
 
-import os
-import sys
-import time
+import os # use os
+import sys # use sys
+import time # use time
+import comm # use comm
+import matplotlib # use matplotlib
 
-import matplotlib
 matplotlib.use("Agg")  # do not use any Xwindows backend
 import matplotlib.pyplot as plt
 
@@ -15,10 +16,9 @@ from mininet.link import TCLink
 from mininet.cli import CLI
 from mininet.log import setLogLevel
 
-import comm
 from topo import DCellTopo
 
-
+# create class DCellController(Controller):
 class DCellController(Controller):
     """
     Run a POX controller for DCell routing in a separate process.
@@ -38,7 +38,7 @@ class DCellController(Controller):
         }
         Controller.__init__(self, **args)
 
-
+# create class TreeController(Controller):
 class TreeController(Controller):
     """
     Run a POX controller for tree structure routing in a separate process.
@@ -57,7 +57,7 @@ class TreeController(Controller):
         }
         Controller.__init__(self, **args)
 
-
+# create class testFaultTolerance():
 def testFaultTolerance():
     """Fault-tolerance test in Section 7.3 of the DCell paper."""
     SERVER_LOG = os.path.join(comm.DIR_LOG, "fault_server.log")
@@ -67,7 +67,7 @@ def testFaultTolerance():
 
     if comm.DCELL_K != 1 or comm.DCELL_N != 4:
         print "Failed: require level-1 DCell with n=4"
-        return
+        return 
 
     # create net
     net = Mininet(topo=DCellTopo(tree=False), link=TCLink, controller=DCellController)
@@ -126,8 +126,8 @@ def testFaultTolerance():
     print ""
     net.stop()
 
-
-def testNetworkCapacity():
+# create def testFaultTolerance():
+def testFaultTolerance():
     """Network capacity test in Section 7.3 of the DCell paper."""
     SERVER_LOG = os.path.join(comm.DIR_LOG, "capacity_server_{}.log")
     CLIENT_LOG = os.path.join(comm.DIR_LOG, "capacity_client_{}_{}.log")
@@ -138,7 +138,8 @@ def testNetworkCapacity():
     if comm.DCELL_K != 1 or comm.DCELL_N != 4:
         print "Failed: require level-1 DCell with n=4"
         return
-
+    
+    # create def test(tree):
     def test(tree):
         # create net
         net = Mininet(
@@ -209,6 +210,7 @@ def testNetworkCapacity():
     plt.clf()
 
 
+# create def main():    
 def main():
     # command-line args
     cli = len(sys.argv) >= 2 and sys.argv[1] == "cli"
@@ -228,4 +230,4 @@ def main():
 
 if __name__ == "__main__":
     setLogLevel("info")
-    main()
+    main() # exit()
